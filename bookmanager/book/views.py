@@ -14,4 +14,9 @@ from django.http import HttpRequest,HttpResponse
 #我们期望用户输入 http://127.0.0.1:8000/inedx/   来访问视图函数
 def index(request):
 
-    return HttpResponse("okokokokokokokokokok")
+    # render(请求,模板名字)
+    context={
+        'name':'shaungshiyiyouyouhui'
+    }
+    return render(request,'book/index.html',context=context)
+    # return HttpResponse("okokokokokokokokokok")
