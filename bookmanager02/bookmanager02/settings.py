@@ -76,8 +76,12 @@ WSGI_APPLICATION = 'bookmanager02.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.mysql',
+        'HOST':'127.0.0.1',     #主机ID
+        'POST':3306,            #端口号
+        'USER':'root',          #用户名
+        'PASSWORD':'mysql',     #密码
+        'NAME':'book_21_01',    #数据库名
     }
 }
 
