@@ -28,9 +28,13 @@ class BookInfo(models.Model):
     commentcount=models.IntegerField(default=0)
     is_delete=models.BooleanField(default=False)
 
+    def __str__(self):
+        return self.name
+
     class Meta:
         db_table='bookinfo'       #修改表名
         verbose_name='书籍管理'        #admin站点使用的
+
 
 class PeopleInfo(models.Model):
     # 定义一个有序字典
@@ -54,3 +58,6 @@ class PeopleInfo(models.Model):
 
     class Meta:
         db_table='peopleinfo'       #修改表名
+
+    def __str__(self):
+        return self.name
