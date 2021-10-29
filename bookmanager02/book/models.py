@@ -22,15 +22,35 @@ create table 'qq_user'(
 )
 '''
 class BookInfo(models.Model):
-    name=models.CharField(max_length=10,unique=True)
+    name=models.CharField(max_length=10,unique=True)   #unipue  是否不重名 True为不重名
     pub_date=models.DateField(null=True)
     readcount=models.IntegerField(default=0)
     commentcount=models.IntegerField(default=0)
     is_delete=models.BooleanField(default=False)
 
     class Meta:
-        db_table='bookinfo'
-        verbose_name='书籍管理'
+        db_table='bookinfo'       #修改表名
+        verbose_name='书籍管理'        #admin站点使用的
 
+class PeopleInfo(models.Model):
+    # 定义一个有序字典
+    GENDER_CHOICE = (
+        (1,'male'),
+        (2,'female')
+    )
+    name=models.CharField(max_length=10,unique=True)
+    gender=models.SmallIntegerField(choices=GENDER_CHOICE,default=1)
+    description=models.CharField(max_length=100,null=True)
+    is_delete=models.BooleanField(default=False)
 
+    #外健
+    #系统会自动为外健添加_id
 
+    #外健的级联操作
+    # 主表 和 从表
+    # 1 对 多
+    # 书籍  对  人物
+    book = models.ForeignKey(BookInfo,on_delete=models.CASCADE)
+
+    class Mate:
+        db_table='peopleinfo'       #修改表名
