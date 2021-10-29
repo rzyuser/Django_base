@@ -52,5 +52,5 @@ class PeopleInfo(models.Model):
     # 书籍  对  人物
     book = models.ForeignKey(BookInfo,on_delete=models.CASCADE)
 
-    class Mate:
+    class Meta:
         db_table='peopleinfo'       #修改表名
