@@ -28,6 +28,9 @@ class BookInfo(models.Model):
     commentcount=models.IntegerField(default=0)
     is_delete=models.BooleanField(default=False)
 
+    #一对多的关联模型中
+    #系统会自动为我们添加一个 关联模型类名小写_set
+    #peopleinfo_set=[PeopleInfo,PeopleInfo,...]
     def __str__(self):
         return self.name
 
@@ -55,7 +58,7 @@ class PeopleInfo(models.Model):
     # 1 对 多
     # 书籍  对  人物
     book = models.ForeignKey(BookInfo,on_delete=models.CASCADE)
-
+    #book=BookInfo()
     class Meta:
         db_table='peopleinfo'       #修改表名
 
