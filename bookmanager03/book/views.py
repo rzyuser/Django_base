@@ -12,5 +12,18 @@ def create_book(request):
 
 def shop(request,city_id,shop_id):
 
-    print(city_id,shop_id)
+    # print(city_id,shop_id)
+    query_params = request.GET
+    # print(query_params)
+    # order = query_params.get('order')
+    # print(order)
+    # order = query_params['order']
+    # print(order)
+    order = query_params.getlist('order')
+    print(order)
     return HttpResponse('齐哥的小饭店')
+
+def register(requset):
+    data=requset.POST
+    print(data)
+    return HttpResponse('ok')
