@@ -134,12 +134,12 @@ def set_cookie(request):
     response.set_cookie('psd',password)
 
     #删除cookie
-    response.delete_cookie('psd')
+    # response.delete_cookie('psd')
     return response
 
 def get_cookie(request):
     #获取cookie信息
-    print(request.COOKIES)
+    # print(request.COOKIES)
 
     #request.COOKIES  字典数据
     name=request.COOKIES.get('name')
@@ -220,3 +220,28 @@ class LoginView(View):
     def post(self, request):
 
         return HttpResponse("post post post")
+
+"""
+我的订单,个人中心页面
+如果用户登陆 可以访问
+如果未登录用户 不应该访问,应该跳转到登陆界面
+
+定义一个订单,个人中心类视图
+
+如何定义我们有没有登陆呢??? 我们以登陆后台占点为例
+"""
+
+from django.contrib.auth.mixins import LoginRequiredMixin
+
+# LoginRequiredMixin 作用 判断 只有登陆用户才可以访问页面
+class OrderView(LoginRequiredMixin,View):
+
+    def get(self,request):
+
+        #标记位
+        # isLogin=False
+        # if not isLogin:
+        #     return HttpResponse("你没有登陆,正在跳转到登陆页面中~~~~")
+        return HttpResponse("GET 我的订单页面,这个页面必须登陆")
+    def post(self,request):
+        return HttpResponse("POST 我的订单页面,这个页面必须登陆")

@@ -3,7 +3,7 @@ from book.views import create_book,shop,register,json,method,response,set_cookie
 
 from django.urls.converters import register_converter
 from book.views import set_session,get_session,login
-from book.views import LoginView
+from book.views import LoginView,OrderView
 
 # 1.定义转化器
 class MobileConverter:
@@ -21,6 +21,7 @@ class MobileConverter:
 #converter  转换器的类
 #type_name 转换器的名字
 register_converter(MobileConverter,'phone')
+
 
 urlpatterns=[
     path('create/',create_book),
@@ -41,4 +42,5 @@ urlpatterns=[
 
     ##############类视图
      path('163login/',LoginView.as_view()),
+     path('163order/',OrderView.as_view()),
 ]
